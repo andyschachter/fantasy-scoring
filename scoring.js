@@ -9,7 +9,23 @@ const calculateScore = (player) => {
     const scoreRushing = (Rushing.yards / 10) + (Rushing.touchdowns * 6) + (Rushing.fumbles * -3)
     const scoreKickReturn = (kickReturn.yards / 15) + (kickReturn.touchdowns * 6) + (kickReturn.fumbles * -3)
     const scorePuntReturn = (puntReturn.yards / 15) + (puntReturn.touchdowns * 6) + (puntReturn.fumbles * -3)
-    let score = scorePassing + scoreReceiving + scoreRushing + scoreKickReturn + scorePuntReturn
+    
+    switch (player.position) {
+        case 'QB':
+            score = scorePassing + scoreRushing;
+            break;
+        case 'RB':
+            score = scoreReceiving + scoreRushing + scoreKickReturn + scorePuntReturn;
+            break;
+        case 'WR':
+            score = scoreReceiving + scoreRushing + scoreKickReturn + scorePuntReturn;
+            break;
+        case 'TE':
+            score = scoreReceiving;
+            break;
+        default:
+            score = 0;
+    }
     return score
 }
 module.exports = calculateScore
