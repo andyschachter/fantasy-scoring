@@ -1,20 +1,15 @@
 const calculateScore = (player) => {
-    switch (player.position) {
-        case 'QB':
-            score = (player.stats.passing.yards / 25) + (player.stats.passing.touchdowns * 6) + (player.stats.passing.interceptions * -3) + (player.stats.rushing.touchdowns * 6) + (player.stats.rushing.yards / 10) + (player.stats.rushing.fumbles * -3) ;
-            break;
-        case 'RB':
-            score = (player.stats.rushing.yards / 10) + (player.stats.rushing.touchdowns * 6) + (player.stats.rushing.fumbles * -3) + (player.stats.receiving.receptions * 1) + (player.stats.receiving.yards / 10) + (player.stats.receiving.touchdowns * 6) + (player.stats.receiving.fumbles * -3) + (player.stats.return.kickreturn.yards / 15) + (player.stats.return.kickreturn.touchdowns * 6) + (player.stats.return.kickreturn.fumbles * -3)+ (player.stats.return.puntreturn.yards / 15) + (player.stats.return.puntreturn.touchdowns * 6) + (player.stats.return.puntreturn.fumbles * -3);
-            break;
-        case 'WR':
-            score = (player.stats.rushing.yards / 10) + (player.stats.rushing.touchdowns * 6) + (player.stats.rushing.fumbles * -3) + (player.stats.receiving.receptions * 1) + (player.stats.receiving.yards / 10) + (player.stats.receiving.touchdowns * 6) + (player.stats.receiving.fumbles * -3) + (player.stats.return.kickreturn.yards / 15) + (player.stats.return.kickreturn.touchdowns * 6) + (player.stats.return.kickreturn.fumbles * -3)+ (player.stats.return.puntreturn.yards / 15) + (player.stats.return.puntreturn.touchdowns * 6) + (player.stats.return.puntreturn.fumbles * -3);
-            break;
-        case 'TE':
-            score = (player.stats.receiving.receptions * 1) + (player.stats.receiving.yards / 10) + (player.stats.receiving.touchdowns * 6) + (player.stats.receiving.fumbles * -3);
-            break;
-        default:
-            score = 0;
-    }
-    return score;
+    const Passing = player.stats.passing
+    const Receiving = player.stats.receiving
+    const Rushing = player.stats.rushing
+    const kickReturn = player.stats.return.kickreturn
+    const puntReturn = player.stats.return.puntreturn
+    const scorePassing = (Passing.yards / 25) + (Passing.touchdowns * 6) + (Passing.interceptions * -3)
+    const scoreReceiving = (Receiving.yards / 10) + (Receiving.touchdowns * 6) + (Receiving.fumbles * -3) + (Receiving.receptions * 1)
+    const scoreRushing = (Rushing.yards / 10) + (Rushing.touchdowns * 6) + (Rushing.fumbles * -3)
+    const scoreKickReturn = (kickReturn.yards / 15) + (kickReturn.touchdowns * 6) + (kickReturn.fumbles * -3)
+    const scorePuntReturn = (puntReturn.yards / 15) + (puntReturn.touchdowns * 6) + (puntReturn.fumbles * -3)
+    let score = scorePassing + scoreReceiving + scoreRushing + scoreKickReturn + scorePuntReturn
+    return score
 }
 module.exports = calculateScore
