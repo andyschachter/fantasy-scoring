@@ -23,17 +23,32 @@ const receivingScore = (player) => {
   
   return catches + yards + touchdowns + fumbles
   }
+const kickReturnScore = (player) => {
+    const KR = player.stats.return.kickreturn
+    const yards = KR.yards / 15
+    const touchdowns = KR.touchdowns * 6
+    const fumbles = KR.fumbles * -3
+
+    return yards + touchdowns + fumbles
+}
+const puntReturnScore = (player) => {
+    const PR = player.stats.return.puntreturn
+    const yards = PR.yards / 15
+    const touchdowns = PR.touchdowns * 6
+    const fumbles = PR.fumbles * -3
+
+    return yards + touchdowns + fumbles
+}
 const calculateScore = (player) => {
   switch (player.position) {
     case 'QB':
       return passingScore(player) + rushingScore(player)
     case 'RB':
-      return rushingScore(player) + receivingScore(player)
-      break
+      return rushingScore(player) + receivingScore(player) + kickReturnScore(player) + puntReturnScore(player)
     case 'WR':
-      break
+      return rushingScore(player) + receivingScore(player) + kickReturnScore(player) + puntReturnScore(player)
     case 'TE':
-      break
+      return receivingScore(player)
     default:
       return 0
   }
@@ -49,7 +64,7 @@ const calculateScore = (player) => {
   const puntReturn = player.stats.return.puntreturn
   const scorePuntReturn = (puntReturn.yards / 15) + (puntReturn.touchdowns * 6) + (puntReturn.fumbles * -3)
 */
-  return score
+
 }
 
 module.exports = calculateScore
