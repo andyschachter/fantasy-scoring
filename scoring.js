@@ -52,19 +52,6 @@ const calculateScore = (player) => {
     default:
       return 0
   }
-
-  // const Passing = player.stats.passing
-  // const scorePassing = (Passing.yards / 25) + (Passing.touchdowns * 6) + (Passing.interceptions * -3)
-  // const Receiving = player.stats.receiving
-  // const scoreReceive = (Receiving.yards/10)+(Receiving.touchdowns*6)+(Receiving.fumbles*-3)+(Receiving.receptions*1)
-  // const Rushing = player.stats.rushing
-  /* const scoreRushing = (Rushing.yards / 10) + (Rushing.touchdowns * 6) + (Rushing.fumbles * -3)
-  const kickReturn = player.stats.return.kickreturn
-  const scoreKickReturn = (kickReturn.yards / 15) + (kickReturn.touchdowns * 6) + (kickReturn.fumbles * -3)
-  const puntReturn = player.stats.return.puntreturn
-  const scorePuntReturn = (puntReturn.yards / 15) + (puntReturn.touchdowns * 6) + (puntReturn.fumbles * -3)
-*/
-
 }
 
 module.exports = calculateScore
