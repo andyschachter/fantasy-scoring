@@ -20,24 +20,24 @@ const receivingScore = (player) => {
   const yards = WR.yards / 10
   const touchdowns = WR.touchdowns * 6
   const fumbles = WR.fumbles * -3
-  
-  return catches + yards + touchdowns + fumbles
-  }
-const kickReturnScore = (player) => {
-    const KR = player.stats.return.kickreturn
-    const yards = KR.yards / 15
-    const touchdowns = KR.touchdowns * 6
-    const fumbles = KR.fumbles * -3
 
-    return yards + touchdowns + fumbles
+  return catches + yards + touchdowns + fumbles
+}
+const kickReturnScore = (player) => {
+  const KR = player.stats.return.kickreturn
+  const yards = KR.yards / 15
+  const touchdowns = KR.touchdowns * 6
+  const fumbles = KR.fumbles * -3
+
+  return yards + touchdowns + fumbles
 }
 const puntReturnScore = (player) => {
-    const PR = player.stats.return.puntreturn
-    const yards = PR.yards / 15
-    const touchdowns = PR.touchdowns * 6
-    const fumbles = PR.fumbles * -3
+  const PR = player.stats.return.puntreturn
+  const yards = PR.yards / 15
+  const touchdowns = PR.touchdowns * 6
+  const fumbles = PR.fumbles * -3
 
-    return yards + touchdowns + fumbles
+  return yards + touchdowns + fumbles
 }
 const calculateScore = (player) => {
   switch (player.position) {
